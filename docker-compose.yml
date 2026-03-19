@@ -1,0 +1,72 @@
+# ─────────────────────────────────────────────────────────────────
+# docker-compose.yml — Local Development Convenience
+#
+# Usage:
+#   docker compose up smoke          # Run smoke tests
+#   docker compose up full           # Run full suite
+#   docker compose up safety         # Run safety tests
+#   docker compose run shell         # Interactive shell
+#
+# Requires: .env file with GOOGLE_API_KEY set
+# ─────────────────────────────────────────────────────────────────
+
+version: "3.9"
+
+x-base: &base
+  build:
+    context: .
+    dockerfile: Dockerfile
+  env_file:
+    - .env
+  volumes:
+    - ./reports:/app/reports      # Persist reports locally
+    - ./data:/app/data            # Share synthesized datasets
+
+services:
+
+  smoke:
+    <<: *base
+    command: make smoke
+    profiles: [smoke]
+
+  full:
+    <<: *base
+    command: make full
+    profiles: [full]
+
+  safety:
+    <<: *base
+    command: make safety
+    profiles: [safety]
+
+  all-tests:
+    <<: *base
+    command: make all-tests
+    profiles: [all]
+
+  check:
+    <<: *base
+    command: python scripts/setup_check.py
+    profiles: [check]
+
+  synthesize:
+    <<: *base
+    command: make synthesize
+    profiles: [synthesize]
+
+  drift:
+    <<: *base
+    command: make drift
+    profiles: [drift]
+
+  export:
+    <<: *base
+    command: python scripts/export_report.py --format all
+    profiles: [export]
+
+  shell:
+    <<: *base
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    profiles: [shell]

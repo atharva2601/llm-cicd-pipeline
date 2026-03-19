@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "llm-cicd-project"
+version = "0.1.0"
+description = "CI/CD LLM Regression Testing Pipeline using DeepEval + Gemini Flash + GitHub Actions"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+deepeval = ">=1.4.0"
+google-generativeai = ">=0.8.0"
+python-dotenv = ">=1.0.0"
+pytest = ">=8.0.0"
+pytest-xdist = ">=3.5.0"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=24.0.0"
+ruff = ">=0.3.0"
+
+[tool.pytest.ini_options]
+# Markers for selective test execution
+markers = [
+    "smoke: fast subset of critical tests (run on every push)",
+    "full: complete regression suite (run on merge to main only)",
+    "safety: adversarial / red-team tests",
+]
+# Default: run smoke tests unless overridden
+addopts = "-v --tb=short"
+testpaths = ["tests"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

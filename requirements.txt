@@ -1,0 +1,11 @@
+# requirements.txt — pip fallback (Poetry is preferred)
+# pip install -r requirements.txt
+deepeval>=1.4.0
+google-generativeai>=0.8.0
+python-dotenv>=1.0.0
+pytest>=8.0.0
+pytest-xdist>=3.5.0
+pytest-json-report>=1.5.0
+pytest-html>=4.0.0
+black>=24.0.0
+ruff>=0.3.0
