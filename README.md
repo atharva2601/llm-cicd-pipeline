@@ -20,7 +20,7 @@
 
 ## Overview
 
-This project implements the **LLMOps** evaluation pattern described in the accompanying research document. It solves the **Evaluation Gap** — the chasm between a working LLM prototype and a production-ready system that is safe, reliable, and hallucination-free.
+This project implements the **LLMOps** evaluation pattern. It solves the **Evaluation Gap** — the chasm between a working LLM prototype and a production-ready system that is safe, reliable, and hallucination-free.
 
 ### Why this matters
 
