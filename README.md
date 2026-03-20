@@ -392,10 +392,6 @@ The nightly workflow run logs scores over time. Connect to Grafana or any observ
 ---
 
 ## Works Cited
-
-Based on the research document:
-*"Comprehensive Roadmap for CI/CD LLM Evaluation Using Free-Tier Tools and Python"*
-
 Key references:
 - [DeepEval Documentation](https://deepeval.com/docs)
 - [Gemini DeepEval Integration](https://deepeval.com/integrations/models/gemini)
